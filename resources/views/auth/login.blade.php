@@ -63,15 +63,6 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="remember" name="remember">
-                                <label class="form-check-label" for="remember">
-                                    Ingat saya
-                                </label>
-                            </div>
-                        </div>
-
                         <button type="submit" class="btn btn-primary w-100">
                             <i class="bi bi-box-arrow-in-right me-1"></i> Login
                         </button>
