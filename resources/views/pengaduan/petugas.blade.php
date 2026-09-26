@@ -7,6 +7,13 @@
     @include('partials.sidebar-petugas')
 
     <div class="main-content flex-grow-1 p-4">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+
         <div class="card">
             <div class="card-body">
                 <h5 class="mb-3"><i class="bi bi-file-earmark-text me-2"></i>Semua Pengaduan</h5>
@@ -21,6 +28,7 @@
                                 <th>Foto</th>
                                 <th>Status</th>
                                 <th>Tanggal</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,7 +56,7 @@
                                     <td>
                                         @php
                                             $badge = match($item->status) {
-                                                'menunggu' => 'bg-warning',
+                                                'menunggu' => 'bg-warning text-dark',
                                                 'diproses' => 'bg-info',
                                                 'selesai' => 'bg-success',
                                             };
@@ -56,9 +64,14 @@
                                         <span class="badge {{ $badge }}">{{ ucfirst($item->status) }}</span>
                                     </td>
                                     <td>{{ $item->created_at->format('d M Y H:i') }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="showDetail({{ $item->id }})" title="Lihat Detail">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="7" class="text-center text-muted">Belum ada pengaduan.</td></tr>
+                                <tr><td colspan="8" class="text-center text-muted">Belum ada pengaduan.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -69,4 +82,6 @@
         </div>
     </div>
 </div>
+
+@include('pengaduan._modal-detail')
 @endsection

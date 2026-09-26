@@ -40,6 +40,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
     Route::get('/profile', [ProfileController::class, 'adminProfile'])->name('profile');
     Route::get('/pengaduan', [PengaduanController::class, 'adminIndex'])->name('pengaduan.index');
+    Route::get('/pengaduan/{id}', [PengaduanController::class, 'show'])->name('pengaduan.show');
+    Route::put('/pengaduan/{id}/status', [PengaduanController::class, 'updateStatus'])->name('pengaduan.updateStatus');
 });
 
 // ==================
@@ -55,6 +57,8 @@ Route::middleware(['auth', 'role:petugas'])->prefix('petugas')->name('petugas.')
 
     Route::get('/profile', [ProfileController::class, 'petugasProfile'])->name('profile');
     Route::get('/pengaduan', [PengaduanController::class, 'petugasIndex'])->name('pengaduan.index');
+    Route::get('/pengaduan/{id}', [PengaduanController::class, 'show'])->name('pengaduan.show');
+    Route::put('/pengaduan/{id}/status', [PengaduanController::class, 'updateStatus'])->name('pengaduan.updateStatus');
 });
 
 // ==================
