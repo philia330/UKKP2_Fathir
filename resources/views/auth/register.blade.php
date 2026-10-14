@@ -14,7 +14,7 @@
                         <p class="text-muted">Buat akun baru untuk membuat pengaduan</p>
                     </div>
 
-                    {{-- Tampilkan pesan error validasi --}}
+                    {{-- Tampilkan pesan error validasi untuk mencegah pendaftaran dengan data yang tidak valid. --}}
                     @if ($errors->any())
                         <div class="alert alert-danger py-2">
                             <ul class="mb-0 ps-3">

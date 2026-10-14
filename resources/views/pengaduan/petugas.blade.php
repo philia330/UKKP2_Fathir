@@ -6,6 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-petugas')
 
+    <!-- Halaman ini menampilkan daftar pengaduan yang bisa dipantau dan diproses oleh petugas. -->
     <div class="main-content flex-grow-1 p-4">
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">

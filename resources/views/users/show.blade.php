@@ -6,6 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-admin')
 
+    <!-- Halaman ini menampilkan detail lengkap akun user yang dipilih oleh admin. -->
     <div class="main-content flex-grow-1 p-4">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">

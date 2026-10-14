@@ -6,9 +6,9 @@
 <div class="d-flex">
     @include('partials.sidebar-admin')
 
-    <!-- Main Content -->
+    <!-- Konten utama dashboard admin. Di sini admin melihat gambaran umum sistem dan statistik utama. -->
     <div class="main-content flex-grow-1 p-4">
-        <!-- Dashboard Content -->
+        <!-- Kartu statistik ini membantu admin memantau jumlah user dan laporan yang ada di sistem. -->
         <div class="row g-4">
             <div class="col-md-3">
                 <div class="card card-stat">

@@ -14,7 +14,7 @@
                         <p class="text-muted">Silakan login untuk melanjutkan</p>
                     </div>
 
-                    {{-- Tampilkan pesan error validasi --}}
+                    {{-- Tampilkan pesan error validasi jika email atau password salah. --}}
                     @if ($errors->any())
                         <div class="alert alert-danger py-2">
                             <ul class="mb-0 ps-3">
@@ -25,7 +25,7 @@
                         </div>
                     @endif
 
-                    {{-- Tampilkan pesan sukses --}}
+                    {{-- Tampilkan pesan sukses setelah registrasi atau logout. --}}
                     @if (session('success'))
                         <div class="alert alert-success py-2">
                             {{ session('success') }}

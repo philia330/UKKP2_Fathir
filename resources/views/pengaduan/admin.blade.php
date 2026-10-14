@@ -6,6 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-admin')
 
+    <!-- Halaman ini menampilkan semua pengaduan yang masuk dari customer untuk keperluan pengawasan admin. -->
     <div class="main-content flex-grow-1 p-4">
         @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">

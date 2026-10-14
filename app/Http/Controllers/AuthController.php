@@ -11,6 +11,8 @@ class AuthController extends Controller
 {
     /**
      * Menampilkan halaman login.
+     *
+     * Ini adalah halaman pertama yang dilihat user ketika belum login.
      */
     public function showLoginForm()
     {
@@ -57,8 +59,8 @@ class AuthController extends Controller
     /**
      * Meregistrasi customer baru.
      *
-     * Role otomatis设置为 'customer' karena
-     * registrasi hanya untuk customer.
+     * Role otomatis diatur menjadi 'customer' karena
+     * registrasi hanya diperuntukkan untuk customer.
      */
     public function register(Request $request)
     {

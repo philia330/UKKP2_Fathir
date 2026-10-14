@@ -7,12 +7,15 @@
     <title>@yield('title', 'Sistem Pengaduan')</title>
 
     <!-- Bootstrap 5 CSS -->
+    <!-- CSS utama dibuat dari Bootstrap agar tampilan halaman konsisten di semua role. -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
+    <!-- Ikon icon digunakan untuk sidebar dan tombol agar terlihat lebih jelas. -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+    <!-- Semua styling khusus untuk sidebar, card statistik, dan layout utama ditaruh di sini. -->
     <style>
         :root {
             --primary-color: #0d6efd;
@@ -77,9 +80,11 @@
     </style>
 </head>
 <body>
+    <!-- Konten utama halaman akan diisi oleh setiap view yang memakai layout ini. -->
     @yield('content')
 
     <!-- Bootstrap 5 JS -->
+    <!-- Script ini memungkinkan fitur dropdown, modal, dan komponen UI Bootstrap bekerja. -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

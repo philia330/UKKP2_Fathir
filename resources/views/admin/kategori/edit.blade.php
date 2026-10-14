@@ -6,7 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-admin')
 
-    <!-- Main Content -->
+    <!-- Form ini digunakan untuk mengubah nama atau deskripsi kategori yang sudah ada. -->
     <div class="main-content flex-grow-1 p-4">
         <div class="card">
             <div class="card-body">

@@ -6,9 +6,9 @@
 <div class="d-flex">
     @include('partials.sidebar-petugas')
 
-    <!-- Main Content -->
+    <!-- Konten utama dashboard petugas. Di sini petugas melihat laporan yang masuk dan statusnya. -->
     <div class="main-content flex-grow-1 p-4">
-        <!-- Dashboard Content -->
+        <!-- Kartu statistik ini membantu petugas memantau apakah laporan masih menunggu, sedang dikerjakan, atau sudah selesai. -->
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="card card-stat">
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <!-- Recent Pengaduan -->
+        <!-- Daftar pengaduan terbaru agar petugas bisa melihat laporan yang baru masuk. -->
         <div class="mt-4">
             <div class="card">
                 <div class="card-header">

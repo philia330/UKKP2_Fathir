@@ -6,6 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-petugas')
 
+    <!-- Form ini dipakai petugas untuk menambahkan data customer baru ke sistem. -->
     <div class="main-content flex-grow-1 p-4">
         <div class="card">
             <div class="card-body">

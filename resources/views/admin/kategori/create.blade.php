@@ -6,7 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-admin')
 
-    <!-- Main Content -->
+    <!-- Form ini dipakai admin untuk membuat kategori baru agar pengaduan bisa dikelompokkan dengan rapi. -->
     <div class="main-content flex-grow-1 p-4">
         <div class="card">
             <div class="card-body">

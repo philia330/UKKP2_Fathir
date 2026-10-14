@@ -6,6 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-admin')
 
+    <!-- Form ini dipakai admin untuk menambahkan user baru dengan role tertentu. -->
     <div class="main-content flex-grow-1 p-4">
         <div class="card">
             <div class="card-body">

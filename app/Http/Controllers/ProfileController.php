@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Controller pengelola profil untuk semua role.
+ *
+ * Kita tidak menerima ID dari URL untuk menampilkan profil. Sebaliknya,
+ * aplikasi selalu mengambil data dari user yang sedang login. Ini penting
+ * agar setiap role hanya bisa melihat profil dirinya sendiri.
+ */
 class ProfileController extends Controller
 {
     /**
@@ -22,6 +29,8 @@ class ProfileController extends Controller
 
     /**
      * Menampilkan halaman profile untuk Petugas.
+     *
+     * Petugas melihat data akun mereka sendiri tanpa bisa mengakses profil user lain.
      */
     public function petugasProfile()
     {

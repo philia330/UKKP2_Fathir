@@ -7,17 +7,23 @@ use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Controller yang menangani tampilan dashboard berdasarkan role user.
+ *
+ * Setiap role memiliki dashboard berbeda agar admin, petugas, dan customer
+ * hanya melihat informasi yang relevan dengan tugas mereka masing-masing.
+ */
 class DashboardController extends Controller
 {
     /**
      * Menampilkan dashboard untuk Admin.
      *
-     * Menampilkan statistik jumlah user, customer, petugas,
-     * dan pengaduan dalam bentuk card.
+     * Di sini admin melihat jumlah user, jumlah customer, jumlah petugas,
+     * dan total pengaduan yang masuk ke sistem.
      */
     public function adminDashboard()
     {
-        // Menghitung jumlah user berdasarkan role
+        // Menghitung jumlah seluruh user berdasarkan role.
         $totalUsers = User::count();
         $totalCustomers = User::where('role', 'customer')->count();
         $totalPetugas = User::where('role', 'petugas')->count();
@@ -34,17 +40,18 @@ class DashboardController extends Controller
     /**
      * Menampilkan dashboard untuk Petugas.
      *
-     * Menampilkan statistik pengaduan dan pengaduan terbaru.
+     * Petugas melihat jumlah pengaduan berdasarkan status dan daftar pengaduan
+     * terbaru yang sedang ditangani atau menunggu respon.
      */
     public function petugasDashboard()
     {
-        // Menghitung pengaduan berdasarkan status
+        // Menghitung pengaduan berdasarkan status.
         $totalPengaduan = Pengaduan::count();
         $menunggu = Pengaduan::where('status', 'menunggu')->count();
         $diproses = Pengaduan::where('status', 'diproses')->count();
         $selesai = Pengaduan::where('status', 'selesai')->count();
 
-        // Mengambil pengaduan terbaru
+        // Mengambil 5 pengaduan terbaru untuk ditampilkan di dashboard.
         $recentPengaduan = Pengaduan::with('user')
             ->latest()
             ->take(5)
@@ -62,11 +69,12 @@ class DashboardController extends Controller
     /**
      * Menampilkan dashboard untuk Customer.
      *
-     * Menampilkan statistik pengaduan milik customer yang sedang login.
+     * Customer hanya melihat statistik pengaduan miliknya sendiri, bukan data
+     * pengaduan semua user. Ini menjaga privasi masing-masing pelanggan.
      */
     public function customerDashboard()
     {
-        // Menghitung pengaduan customer yang sedang login
+        // Menghitung pengaduan customer yang sedang login.
         $totalPengaduan = Pengaduan::where('user_id', Auth::id())->count();
         $menunggu = Pengaduan::where('user_id', Auth::id())
             ->where('status', 'menunggu')
@@ -78,7 +86,7 @@ class DashboardController extends Controller
             ->where('status', 'selesai')
             ->count();
 
-        // Mengambil pengaduan terbaru customer
+        // Mengambil pengaduan terbaru milik customer yang sedang login.
         $recentPengaduan = Pengaduan::where('user_id', Auth::id())
             ->latest()
             ->take(5)

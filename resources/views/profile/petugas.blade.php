@@ -10,6 +10,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-4">
+                    <!-- Profil petugas memakai warna biru agar mudah dibedakan dari admin dan customer. -->
                     <i class="bi bi-person-circle text-info" style="font-size: 4rem;"></i>
                     <div class="ms-3">
                         <h4 class="mb-0">{{ $user->nama }}</h4>
@@ -17,6 +18,7 @@
                     </div>
                 </div>
 
+                <!-- Data akun petugas selalu diambil dari user yang sedang login. -->
                 <table class="table table-borderless">
                     <tr>
                         <th width="200">Nama</th>

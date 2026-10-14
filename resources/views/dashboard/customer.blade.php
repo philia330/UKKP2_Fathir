@@ -6,9 +6,9 @@
 <div class="d-flex">
     @include('partials.sidebar-customer')
 
-    <!-- Main Content -->
+    <!-- Konten utama dashboard customer. Data yang ditampilkan bersifat personal berdasarkan user yang login. -->
     <div class="main-content flex-grow-1 p-4">
-        <!-- Dashboard Content -->
+        <!-- Kartu statistik ringkas untuk melihat perkembangan laporan customer. -->
         <div class="row g-4">
             <div class="col-md-3">
                 <div class="card card-stat">
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <!-- Recent Pengaduan -->
+        <!-- Daftar pengaduan terbaru milik customer yang sedang login. -->
         <div class="mt-4">
             <div class="card">
                 <div class="card-header">

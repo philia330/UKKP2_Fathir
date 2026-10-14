@@ -10,6 +10,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-4">
+                    <!-- Icon profil dipakai untuk memberi kesan personal pada halaman data akun. -->
                     <i class="bi bi-person-circle text-primary" style="font-size: 4rem;"></i>
                     <div class="ms-3">
                         <h4 class="mb-0">{{ $user->nama }}</h4>
@@ -17,6 +18,7 @@
                     </div>
                 </div>
 
+                <!-- Tabel ini menampilkan data akun yang sedang login. -->
                 <table class="table table-borderless">
                     <tr>
                         <th width="200">Nama</th>

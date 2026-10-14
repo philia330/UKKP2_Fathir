@@ -6,7 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-admin')
 
-    <!-- Main Content -->
+    <!-- Halaman ini berfungsi sebagai daftar master kategori laporan yang bisa dipakai customer saat membuat pengaduan. -->
     <div class="main-content flex-grow-1 p-4">
         <!-- Alert Messages -->
         @if (session('success'))

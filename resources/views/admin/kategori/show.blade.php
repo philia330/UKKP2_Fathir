@@ -6,7 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-admin')
 
-    <!-- Main Content -->
+    <!-- Halaman ini menampilkan detail satu kategori dan daftar pengaduan yang masuk ke kategori tersebut. -->
     <div class="main-content flex-grow-1 p-4">
         <!-- Detail Card -->
         <div class="card">

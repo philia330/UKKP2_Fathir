@@ -10,6 +10,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-4">
+                    <!-- Tampilan profil customer memakai warna hijau untuk membedakan role. -->
                     <i class="bi bi-person-circle text-success" style="font-size: 4rem;"></i>
                     <div class="ms-3">
                         <h4 class="mb-0">{{ $user->nama }}</h4>
@@ -17,6 +18,7 @@
                     </div>
                 </div>
 
+                <!-- Data di sini adalah data akun customer yang sedang login, bukan data user lain. -->
                 <table class="table table-borderless">
                     <tr>
                         <th width="200">Nama</th>

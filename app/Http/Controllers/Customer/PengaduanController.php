@@ -8,13 +8,19 @@ use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Controller yang menangani proses pengaduan milik customer.
+ *
+ * Customer hanya bisa menambah dan melihat pengaduan yang dibuatnya sendiri,
+ * sehingga data antar pelanggan tidak tercampur.
+ */
 class PengaduanController extends Controller
 {
     /**
      * Menampilkan daftar pengaduan milik customer yang sedang login.
      *
-     * Customer hanya bisa melihat pengaduan miliknya sendiri,
-     * karena query difilter berdasarkan user_id yang sedang login.
+     * Query difilter berdasarkan user_id agar customer hanya melihat
+     * pengaduannya sendiri dan tidak dapat melihat laporan orang lain.
      */
     public function index()
     {
@@ -28,10 +34,13 @@ class PengaduanController extends Controller
 
     /**
      * Menampilkan form untuk membuat pengaduan baru.
+     *
+     * Data kategori diambil dari database lalu ditampilkan dalam dropdown
+     * supaya customer bisa memilih jenis pengaduan yang sesuai.
      */
     public function create()
     {
-        // Mengambil semua kategori untuk dropdown
+        // Mengambil semua kategori untuk dropdown pilihan pengaduan.
         $kategoris = Kategori::orderBy('nama')->get();
 
         return view('pengaduan.customer.create', compact('kategoris'));
@@ -40,25 +49,25 @@ class PengaduanController extends Controller
     /**
      * Menyimpan pengaduan baru dari customer.
      *
-     * user_id diambil dari user yang sedang login (bukan dari input form),
-     * supaya customer tidak bisa membuat pengaduan atas nama customer lain.
+     * user_id diambil dari akun yang sedang login, bukan dari input form,
+     * supaya customer tidak bisa membuat pengaduan atas nama user lain.
      */
     public function store(Request $request)
     {
-        // Validasi data dari form
+        // Validasi data dari form agar isian sesuai aturan.
         $validated = $request->validate([
             'kategori_id' => 'required|exists:kategori,id',
             'pengaduan' => 'required|string',
             'foto' => 'nullable|image|max:2048',
         ]);
 
-        // Upload foto jika ada, simpan ke storage/app/public/foto
+        // Upload foto bukti jika user memilih file gambar.
         if ($request->hasFile('foto')) {
             $path = $request->file('foto')->store('foto', 'public');
             $validated['foto'] = $path;
         }
 
-        // Menghubungkan pengaduan dengan user yang sedang login
+        // Menambahkan user_id otomatis dari customer yang sedang login.
         $validated['user_id'] = Auth::id();
 
         Pengaduan::create($validated);

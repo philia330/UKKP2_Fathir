@@ -7,13 +7,19 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Controller khusus untuk kebutuhan petugas dalam mengelola customer.
+ *
+ * Petugas tidak bisa mengakses data admin atau mengubah role user,
+ * tetapi masih dapat melihat dan menambahkan customer baru.
+ */
 class CustomerController extends Controller
 {
     /**
-     * Menampilkan daftar customer.
+     * Menampilkan daftar customer yang terdaftar di sistem.
      *
-     * Petugas hanya dapat melihat daftar customer,
-     * bukan admin atau petugas lain.
+     * Query hanya mengambil user dengan role customer agar petugas tidak
+     * melihat data admin atau petugas lain.
      */
     public function index()
     {
@@ -25,10 +31,10 @@ class CustomerController extends Controller
     }
 
     /**
-     * Menampilkan form untuk membuat customer baru.
+     * Menampilkan form pendaftaran customer baru oleh petugas.
      *
-     * Petugas hanya dapat membuat customer,
-     * bukan admin atau petugas.
+     * Proses ini biasanya dipakai ketika customer belum memiliki akun
+     * atau petugas ingin membantu pembuatan akun.
      */
     public function create()
     {
@@ -36,14 +42,14 @@ class CustomerController extends Controller
     }
 
     /**
-     * Menyimpan customer baru.
+     * Menyimpan customer baru ke database.
      *
-     * Role otomatis diset menjadi 'customer' karena
-     * petugas hanya boleh membuat customer.
+     * Semua akun yang dibuat dari sini otomatis diberi role customer,
+     * karena petugas tidak diperkenankan membuat akun admin atau petugas.
      */
     public function store(Request $request)
     {
-        // Validasi data input
+        // Validasi data input agar email unik dan password aman.
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
@@ -51,7 +57,7 @@ class CustomerController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-        // Membuat customer baru dengan role 'customer'
+        // Membuat customer baru dengan role customer.
         User::create([
             'nama' => $validated['nama'],
             'email' => $validated['email'],

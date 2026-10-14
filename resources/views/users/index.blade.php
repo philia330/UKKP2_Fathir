@@ -6,7 +6,7 @@
 <div class="d-flex">
     @include('partials.sidebar-admin')
 
-    <!-- Main Content -->
+    <!-- Halaman ini menampilkan daftar seluruh user yang terdaftar di sistem. -->
     <div class="main-content flex-grow-1 p-4">
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
